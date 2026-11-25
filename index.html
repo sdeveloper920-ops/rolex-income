@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="bn"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>𝐑𝐎𝐋𝐄𝐗 𝐈𝐍𝐂𝐎𝐌𝐄</title>
+<meta name="theme-color" content="#07110c">
+<style>
+:root{--gold:#d8b45a;--green:#0a5138;--bg:#07100c;--panel:#101b15;--muted:#b7c2ba;--red:#e77b70}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#174b35,#07100c 48%);color:#f7f4e9;font-family:system-ui,Arial,sans-serif}
+header{display:flex;align-items:center;gap:12px;padding:12px 4%;border-bottom:1px solid #b8954644;background:#050b08ed;position:sticky;top:0;z-index:2}
+.logo{width:58px;height:58px;object-fit:cover;border-radius:50%;border:2px double var(--gold)}.brand{font-weight:900;letter-spacing:1px;font-size:clamp(17px,4vw,23px);color:var(--gold)}.tag{font-size:11px;color:var(--muted)}
+main{max-width:1050px;margin:22px auto;padding:0 14px}.hero,.panel{background:#101b15ee;border:1px solid #c7a34d55;border-radius:18px;padding:19px;box-shadow:0 12px 35px #0005;margin-bottom:14px}
+.hero{text-align:center}.hero img{width:145px;height:145px;object-fit:cover;border-radius:50%;border:3px double var(--gold);box-shadow:0 0 25px #d8b45a33}
+h1,h2{color:var(--gold)}h1{font-size:clamp(22px,5vw,32px);margin:10px 0 4px}h2{font-size:19px;margin:0 0 12px}.muted{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+button,.btn{background:linear-gradient(135deg,#f1d486,#b78b31);color:#17130a;border:0;border-radius:11px;padding:11px 15px;font-weight:800;cursor:pointer;margin:4px 3px}
+button.secondary{background:#1d382a;color:#f4e5b9;border:1px solid #b89546}button.danger{background:#672e29;color:white}
+input,select,textarea{width:100%;padding:11px;border-radius:10px;border:1px solid #9a854c;background:#080f0b;color:white;margin:6px 0 10px}
+label{font-size:13px;color:#d9d0b7}.hidden{display:none!important}.stat{font-size:25px;color:var(--gold);font-weight:800}.item{padding:12px;border:1px solid #b8954638;border-radius:12px;margin:8px 0;background:#09130e}.notice{border-left:3px solid var(--gold);padding:10px 13px;background:#d8b45a12;color:#e9dfc5;border-radius:8px}
+nav{display:flex;flex-wrap:wrap;gap:4px;margin:12px 0}.status{font-size:12px;color:var(--muted)}#message{position:sticky;top:82px;z-index:3;background:#163b2a;border:1px solid var(--gold);padding:10px;border-radius:10px;margin-bottom:10px;display:none}
+footer{text-align:center;padding:25px;color:#89958e;font-size:12px}
+</style></head><body>
+<header><img class="logo" src="/assets/rolex-income-logo.png" alt="ROLEX INCOME"><div><div class="brand">𝐑𝐎𝐋𝐄𝐗 𝐈𝐍𝐂𝐎𝐌𝐄</div><div class="tag">EARN • TASK • GROW</div></div></header>
+<main><div id="message"></div>
+<section id="welcome" class="hero"><img src="/assets/rolex-income-logo.png" alt="Company logo"><h1>𝐑𝐎𝐋𝐄𝐗 𝐈𝐍𝐂𝐎𝐌𝐄</h1><p class="muted">YOUR ONLINE EARNING PARTNER</p><p>স্বাগতম! অ্যাকাউন্টে প্রবেশ করতে Google দিয়ে লগইন করুন।</p><button id="loginBtn">Google দিয়ে লগইন</button><p class="status">শুধু নিজের অ্যাকাউন্ট ব্যবহার করুন।</p></section>
+<section id="app" class="hidden">
+<div class="panel"><div class="grid"><div><div class="muted">বর্তমান ব্যালেন্স</div><div class="stat" id="balance">৳ 0.00</div></div><div><div class="muted">অ্যাকাউন্ট</div><b id="userName">—</b><div class="status" id="userEmail"></div></div></div><button class="secondary" id="logoutBtn">লগআউট</button></div>
+<nav><button class="secondary" data-tab="tasks">Tasks</button><button class="secondary" data-tab="deposit">Deposit</button><button class="secondary" data-tab="withdraw">Withdraw</button><button class="secondary" data-tab="history">History</button><button class="secondary hidden" id="adminTab" data-tab="admin">Admin Panel</button></nav>
+<section id="tab-tasks" class="panel"><h2>Available Tasks</h2><div id="tasksList">লোড হচ্ছে…</div></section>
+<section id="tab-deposit" class="panel hidden"><h2>Deposit Request</h2><div class="notice">ম্যানুয়াল পেমেন্ট: Admin অনুমোদন না করা পর্যন্ত ব্যালেন্স যোগ হবে না।</div><label>পেমেন্ট মাধ্যম</label><select id="depMethod"><option>bKash</option><option>Nagad</option><option>Rocket</option></select><label>পরিমাণ (৳)</label><input id="depAmount" type="number" min="1" placeholder="যেমন 500"><label>Transaction ID</label><input id="depTrx" placeholder="TrxID"><button id="depositBtn">Request Deposit</button></section>
+<section id="tab-withdraw" class="panel hidden"><h2>Withdraw Request</h2><div class="notice">Admin অনুমোদন/প্রক্রিয়া সম্পন্ন করবে। ভুল নম্বর দেবেন না।</div><label>মাধ্যম</label><select id="withMethod"><option>bKash</option><option>Nagad</option><option>Rocket</option></select><label>নম্বর</label><input id="withNumber" placeholder="01XXXXXXXXX"><label>পরিমাণ (৳)</label><input id="withAmount" type="number" min="1" placeholder="যেমন 200"><button id="withdrawBtn">Request Withdraw</button></section>
+<section id="tab-history" class="panel hidden"><h2>Transaction History</h2><div id="historyList"></div></section>
+<section id="tab-admin" class="panel hidden"><h2>Admin Panel</h2><div class="notice">Admin access: sdeveloper920@gmail.com</div>
+<h3>নতুন Task</h3><label>Task নাম</label><input id="taskTitle" placeholder="Task title"><label>Reward (৳)</label><input id="taskReward" type="number" min="0.01" step="0.01"><label>দৈনিক সীমা</label><input id="taskLimit" type="number" min="1" value="1"><button id="createTaskBtn">Create Task</button>
+<h3>Pending Requests</h3><div id="adminRequests"></div><h3>Tasks Management</h3><div id="adminTasks"></div></section>
+</section>
+<section class="panel"><h2>গুরুত্বপূর্ণ</h2><p class="muted">এই প্ল্যাটফর্মে কোনো আয় নিশ্চিত নয়। Admin যাচাই, নিয়মনীতি, বাস্তব পেমেন্ট ব্যবস্থা এবং আইনগত/ব্যবসায়িক অনুমোদন ছাড়া টাকা সংগ্রহ করবেন না।</p></section>
+</main><footer>© 𝐑𝐎𝐋𝐄𝐗 𝐈𝐍𝐂𝐎𝐌𝐄 • Earn responsibly</footer>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="/firebase-config.js"></script><script src="/app.js"></script>
+</body></html>
